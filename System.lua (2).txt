@@ -15,30 +15,26 @@ local sellConfig = {
     BANK_KEY = "SELL_SYSTEM_BANK",
     
     categories = {
-        "Chemical", "Cooking", "Egg", "Ghost", 
-        "Milk", "Miner", "Startopia", "Surgery", "Wool"
+        "Chemical", "Egg", "Ghost", 
+        "Milk", "Tackle", "Surgery", "Wool"
     },
     prices = {
-        Chemical = 10,
-        Cooking = 15,
-        Egg = 20,
-        Ghost = 25,
-        Milk = 12,
-        Miner = 18,
-        Startopia = 30,
-        Surgery = 50,
-        Wool = 8
+        Chemical = 25,
+        Egg = 3,
+        Ghost = 2,
+        Milk = 3,
+        Tackle = 100,
+        Surgery = 10,
+        Wool = 5,
     },
     itemIDs = {
-        Chemical = 1234,  -- Ganti dengan ID item sebenarnya
-        Cooking = 1235,
-        Egg = 1236,
-        Ghost = 1237,
-        Milk = 1238,
-        Miner = 1239,
-        Startopia = 1240,
-        Surgery = 1241,
-        Wool = 1242
+        Chemical = 922,  -- Ganti dengan ID item sebenarnya
+        Egg = 874,
+        Ghost = 3722,
+        Tackle = 3044,
+        Milk = 868,
+        Surgery = 4298,
+        Wool = 3890,
     }
 }
 
