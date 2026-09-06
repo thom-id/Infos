@@ -1,50 +1,85 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="id" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GTPS Cloud Docs</title>
     <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome untuk icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
 
+    <!-- ===== LOADING SCREEN ===== -->
+    <div id="loader">
+        <div class="loader-spinner"></div>
+        <p>Loading Docs...</p>
+    </div>
+
     <!-- ===== SIDEBAR ===== -->
-    <aside class="sidebar">
-        <h1>🎮 GTPS <span>Docs</span></h1>
-        <div class="sub">Lua API Reference</div>
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h1>🎮 GTPS <span>Docs</span></h1>
+            <button class="close-menu" id="closeMenu"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="sub">Lua API Reference v2.0</div>
 
         <div class="search-box">
-            <span>🔍</span>
-            <input type="text" id="searchInput" placeholder="Cari dokumentasi...">
+            <i class="fas fa-search"></i>
+            <input type="text" id="searchInput" placeholder="Cari dokumentasi... (Ctrl+K)">
         </div>
 
         <nav id="navMenu">
             <div class="nav-label">Getting Started</div>
-            <a href="#" class="active" data-page="home">🚀 Quick Start</a>
-            <a href="#" data-page="install">📦 Installation</a>
+            <a href="#" class="active" data-page="home"><i class="fas fa-rocket"></i> Quick Start</a>
+            <a href="#" data-page="install"><i class="fas fa-download"></i> Installation</a>
 
             <div class="nav-label">API Reference</div>
-            <a href="#" data-page="callbacks">🔔 Callbacks <span class="badge">83</span></a>
-            <a href="#" data-page="player">👤 Player Methods <span class="badge">125</span></a>
-            <a href="#" data-page="world">🌍 World Methods <span class="badge">68</span></a>
+            <a href="#" data-page="callbacks"><i class="fas fa-bell"></i> Callbacks <span class="badge">83</span></a>
+            <a href="#" data-page="player"><i class="fas fa-user"></i> Player Methods <span class="badge">125</span></a>
+            <a href="#" data-page="world"><i class="fas fa-globe"></i> World Methods <span class="badge">68</span></a>
 
             <div class="nav-label">Examples</div>
-            <a href="#" data-page="commands">⚡ Commands</a>
-            <a href="#" data-page="storage">💾 Data Storage</a>
-            <a href="#" data-page="dialogs">💬 Dialogs</a>
+            <a href="#" data-page="commands"><i class="fas fa-terminal"></i> Commands</a>
+            <a href="#" data-page="storage"><i class="fas fa-database"></i> Data Storage</a>
+            <a href="#" data-page="dialogs"><i class="fas fa-comment"></i> Dialogs</a>
         </nav>
+
+        <div class="sidebar-footer">
+            <button id="themeToggle"><i class="fas fa-moon"></i> <span>Dark</span></button>
+        </div>
     </aside>
 
-    <!-- ===== CONTENT ===== -->
+    <!-- ===== MOBILE OVERLAY ===== -->
+    <div class="overlay" id="overlay"></div>
+
+    <!-- ===== MAIN CONTENT ===== -->
     <main class="content">
 
-        <!-- PAGE: HOME -->
-        <div id="page-home">
-            <h1>🎮 GTPS Cloud Lua API</h1>
-            <div class="tag">📘 Complete Lua Reference</div>
+        <!-- ===== TOP BAR ===== -->
+        <div class="topbar">
+            <button class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></button>
+            <div class="breadcrumb" id="breadcrumb">📄 Home</div>
+            <div class="topbar-actions">
+                <button id="themeToggleTop"><i class="fas fa-moon"></i></button>
+                <button id="backToTop"><i class="fas fa-arrow-up"></i></button>
+            </div>
+        </div>
+
+        <!-- ===== PAGE: HOME ===== -->
+        <div id="page-home" class="page">
+            <div class="page-header">
+                <h1>🎮 GTPS Cloud Lua API</h1>
+                <div class="tag">📘 Complete Lua Reference</div>
+            </div>
+
+            <div class="typing-container">
+                <span id="typing-text"></span><span class="cursor">|</span>
+            </div>
 
             <p>Complete Lua scripting reference for GTPS Cloud. Build custom systems, events, dialogs, and much more — all through Lua!</p>
 
+            <!-- STATS -->
             <div class="stats">
                 <div class="stat-card"><div class="num">83</div><div class="lbl">Callbacks</div></div>
                 <div class="stat-card"><div class="num">125</div><div class="lbl">Player Methods</div></div>
@@ -52,14 +87,25 @@
                 <div class="stat-card"><div class="num">411</div><div class="lbl">Total Methods</div></div>
             </div>
 
-            <h2>🚀 Quick Start</h2>
+            <!-- TOC -->
+            <div class="toc">
+                <h4><i class="fas fa-list"></i> Daftar Isi</h4>
+                <ul>
+                    <li><a href="#quickstart">🚀 Quick Start</a></li>
+                    <li><a href="#template">📝 Basic Template</a></li>
+                    <li><a href="#notes">⚠️ Important Notes</a></li>
+                    <li><a href="#colors">🎨 Color Codes</a></li>
+                </ul>
+            </div>
+
+            <h2 id="quickstart"><i class="fas fa-rocket"></i> Quick Start</h2>
             <p>Lua scripts in GTPS Cloud are loaded automatically on server start. Create a <code>.lua</code> file and upload it through the File Manager in your dashboard.</p>
 
-            <h3>📝 Basic Template</h3>
+            <h3 id="template">📝 Basic Template</h3>
             <div class="code-wrap">
-                <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                <button class="copy-btn" onclick="copyCode(this)"><i class="fas fa-copy"></i> Copy</button>
                 <pre><span class="cmt">-- Basic GTPS Cloud script template</span>
-<span class="fn">print</span>(<span class="str">"(Loaded) My Script"</span>)
+<span class="fn">print</span>(<span class="str">"(Loaded) My Script — by Developer"</span>)
 
 <span class="kw">registerLuaCommand</span>({
     command = <span class="str">"hello"</span>,
@@ -71,31 +117,50 @@
     <span class="kw">local</span> cmd = fullCommand:match(<span class="str">"^(%S+)"</span>)
     <span class="kw">if</span> cmd ~= <span class="str">"hello"</span> <span class="kw">then</span> <span class="kw">return</span> <span class="kw">false</span> <span class="kw">end</span>
     
-    player:onConsoleMessage(<span class="str">"Hello, world!"</span>)
+    <span class="kw">local</span> name = player:getCleanName()
+    player:onConsoleMessage(<span class="str">"`6Hello, "</span> .. name .. <span class="str">"! Welcome!"</span>)
+    player:onTalkBubble(player:getNetID(), <span class="str">"Hey!"</span>, <span class="num">1</span>)
     <span class="kw">return</span> <span class="kw">true</span>
+<span class="kw">end</span>)
+
+<span class="cmt">-- Greet on login</span>
+<span class="kw">onPlayerLoginCallback</span>(<span class="kw">function</span>(player)
+    player:sendVariant({
+        <span class="str">"OnAddNotification"</span>,
+        <span class="str">"interface/science_button.rttex"</span>,
+        <span class="str">"`wWelcome to the server!"</span>,
+        <span class="str">"audio/hub_open.wav"</span>
+    })
 <span class="kw">end</span>)</pre>
             </div>
 
-            <h2>⚠️ Important Notes</h2>
+            <h2 id="notes"><i class="fas fa-exclamation-triangle"></i> Important Notes</h2>
 
-            <div class="note">
-                <strong>🔒 Don't pass Player objects into timers</strong>
-                Use <code>getUserID()</code> to store a reference.
+            <div class="note info">
+                <strong><i class="fas fa-lock"></i> Don't pass Player objects into timers</strong>
+                Use <code>getUserID()</code> to store a reference, then call <code>getPlayer()</code> inside the timer.
             </div>
 
-            <div class="note warn">
-                <strong>💾 Save data inside onAutoSaveRequest</strong>
-                Save all your Lua state here.
+            <div class="note warning">
+                <strong><i class="fas fa-save"></i> Save data inside onAutoSaveRequest</strong>
+                The server calls this callback periodically. Save all your Lua state here.
             </div>
 
             <div class="note danger">
-                <strong>⚡ Avoid heavy computation in onTick</strong>
-                These callbacks fire every 100ms.
+                <strong><i class="fas fa-bolt"></i> Avoid heavy computation in onTick</strong>
+                These callbacks fire every 100ms. Large loops can cause server lag.
             </div>
 
-            <h2>🎨 Color Codes</h2>
+            <div class="note success">
+                <strong><i class="fas fa-code-branch"></i> Wrap HTTP requests in coroutines</strong>
+                All <code>http.get()</code> and <code>http.post()</code> calls must be wrapped in <code>coroutine.wrap()</code>.
+            </div>
+
+            <h2 id="colors"><i class="fas fa-palette"></i> Color Codes</h2>
+            <p>Use a backtick followed by a digit or letter to colorize text in console messages, dialogs, and more.</p>
+
             <div class="color-grid">
-                <div class="color-item"><div class="swatch" style="background:#fff;"></div><code>`0</code> White</div>
+                <div class="color-item"><div class="swatch" style="background:#ffffff;"></div><code>`0</code> White</div>
                 <div class="color-item"><div class="swatch" style="background:#9b59b6;"></div><code>`1</code> Purple</div>
                 <div class="color-item"><div class="swatch" style="background:#2ecc71;"></div><code>`2</code> Green</div>
                 <div class="color-item"><div class="swatch" style="background:#f1c40f;"></div><code>`3</code> Yellow</div>
@@ -108,49 +173,79 @@
                 <div class="color-item"><div class="swatch" style="background:#ecf0f1;"></div><code>`w</code> White2</div>
                 <div class="color-item"><div class="swatch" style="background:#d35400;"></div><code>`o</code> Orange2</div>
             </div>
+
+            <div class="note info">
+                <strong><i class="fas fa-lightbulb"></i> Pro Tip:</strong> Kombinasikan kode warna untuk efek gradasi, misalnya <code>`2Hello `6World`w!</code> akan menampilkan "Hello" hijau dan "World" emas.
+            </div>
         </div>
 
-        <!-- PAGE: INSTALL -->
-        <div id="page-install" style="display:none;">
-            <h1>📦 Installation</h1>
-            <p>Panduan instalasi GTPS Cloud.</p>
+        <!-- ===== PAGE: INSTALL ===== -->
+        <div id="page-install" class="page" style="display:none;">
+            <div class="page-header">
+                <h1>📦 Installation</h1>
+                <div class="tag">📘 Step by Step</div>
+            </div>
+            <p>Panduan instalasi GTPS Cloud akan muncul di sini. (Konten bisa diedit sesuai kebutuhan)</p>
         </div>
 
-        <!-- PAGE: CALLBACKS -->
-        <div id="page-callbacks" style="display:none;">
-            <h1>🔔 Callbacks</h1>
-            <p>Daftar lengkap callback.</p>
+        <!-- ===== PAGE: CALLBACKS ===== -->
+        <div id="page-callbacks" class="page" style="display:none;">
+            <div class="page-header">
+                <h1>🔔 Callbacks</h1>
+                <div class="tag">📘 83 Total</div>
+            </div>
+            <p>Daftar lengkap callback yang tersedia di GTPS Cloud. (Konten bisa diedit)</p>
         </div>
 
-        <!-- PAGE: PLAYER -->
-        <div id="page-player" style="display:none;">
-            <h1>👤 Player Methods</h1>
-            <p>Dokumentasi method Player.</p>
+        <!-- ===== PAGE: PLAYER ===== -->
+        <div id="page-player" class="page" style="display:none;">
+            <div class="page-header">
+                <h1>👤 Player Methods</h1>
+                <div class="tag">📘 125 Total</div>
+            </div>
+            <p>Dokumentasi lengkap method untuk objek Player. (Konten bisa diedit)</p>
         </div>
 
-        <!-- PAGE: WORLD -->
-        <div id="page-world" style="display:none;">
-            <h1>🌍 World Methods</h1>
-            <p>Dokumentasi method World.</p>
+        <!-- ===== PAGE: WORLD ===== -->
+        <div id="page-world" class="page" style="display:none;">
+            <div class="page-header">
+                <h1>🌍 World Methods</h1>
+                <div class="tag">📘 68 Total</div>
+            </div>
+            <p>Dokumentasi lengkap method untuk objek World. (Konten bisa diedit)</p>
         </div>
 
-        <!-- PAGE: COMMANDS -->
-        <div id="page-commands" style="display:none;">
-            <h1>⚡ Commands</h1>
-            <p>Contoh pembuatan command.</p>
+        <!-- ===== PAGE: COMMANDS ===== -->
+        <div id="page-commands" class="page" style="display:none;">
+            <div class="page-header">
+                <h1>⚡ Commands</h1>
+                <div class="tag">📘 Examples</div>
+            </div>
+            <p>Contoh pembuatan command di GTPS Cloud. (Konten bisa diedit)</p>
         </div>
 
-        <!-- PAGE: STORAGE -->
-        <div id="page-storage" style="display:none;">
-            <h1>💾 Data Storage</h1>
-            <p>Panduan menyimpan data.</p>
+        <!-- ===== PAGE: STORAGE ===== -->
+        <div id="page-storage" class="page" style="display:none;">
+            <div class="page-header">
+                <h1>💾 Data Storage</h1>
+                <div class="tag">📘 Guide</div>
+            </div>
+            <p>Panduan menyimpan data player secara persistens. (Konten bisa diedit)</p>
         </div>
 
-        <!-- PAGE: DIALOGS -->
-        <div id="page-dialogs" style="display:none;">
-            <h1>💬 Dialogs</h1>
-            <p>Contoh pembuatan dialog.</p>
+        <!-- ===== PAGE: DIALOGS ===== -->
+        <div id="page-dialogs" class="page" style="display:none;">
+            <div class="page-header">
+                <h1>💬 Dialogs</h1>
+                <div class="tag">📘 Examples</div>
+            </div>
+            <p>Contoh pembuatan dialog box dengan <code>sendVariant</code>. (Konten bisa diedit)</p>
         </div>
+
+        <!-- ===== FOOTER ===== -->
+        <footer class="footer">
+            <p>© 2026 GTPS Cloud Docs — Dibuat dengan ❤️ untuk komunitas</p>
+        </footer>
 
     </main>
 
