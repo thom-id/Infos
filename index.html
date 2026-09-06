@@ -2,536 +2,158 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>THOM</title>
-
-    <!-- SEO & Social Sharing -->
-    <meta name="description" content="The less you know, the better.">
-    <meta property="og:title" content="THOM">
-    <meta property="og:description" content="The less you know, the better.">
-    <meta property="og:image" content="https://cdn.phototourl.com/free/2026-08-04-1192ef1c-b388-45d3-8747-9df2928b501d.png">
-    <meta name="theme-color" content="#0a0a0a">
-
-    <!-- Favicon -->
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90' style='font-weight:bold'>✦</text></svg>">
-
-    <style>
-        /* ==========================================
-                   GLOBAL & RESET
-                   ========================================== */
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap');
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Inter', 'Arial', sans-serif;
-        }
-
-        html,
-        body {
-            width: 100%;
-            min-height: 100vh;
-            overflow: hidden;
-            touch-action: none;
-            overscroll-behavior: none;
-            background: #0a0a0a;
-            color: #e0e0e0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: fixed;
-            inset: 0;
-        }
-
-        /* ==========================================
-                   BINTANG BACKGROUND
-                   ========================================== */
-        #stars {
-            position: fixed;
-            inset: 0;
-            z-index: 0;
-            pointer-events: none;
-            overflow: hidden;
-        }
-        .star {
-            position: absolute;
-            border-radius: 50%;
-            background: white;
-            animation: twinkle var(--duration) infinite alternate;
-            opacity: 0.3;
-        }
-        @keyframes twinkle {
-            0% {
-                opacity: 0.1;
-                transform: scale(0.8);
-            }
-            100% {
-                opacity: 1;
-                transform: scale(1.2);
-            }
-        }
-
-        /* ==========================================
-                   WRAPPER UTAMA
-                   ========================================== */
-        .wrapper {
-            position: relative;
-            z-index: 1;
-            width: 420px;
-            max-width: 94%;
-            max-height: 96vh;
-            overflow-y: auto;
-            scrollbar-width: none;
-            display: flex;
-            flex-direction: column;
-            gap: 14px;
-        }
-        .wrapper::-webkit-scrollbar {
-            display: none;
-        }
-
-        /* ==========================================
-                   KOLOM 1 — PROFIL
-                   ========================================== */
-        .card-profile {
-            padding: 24px 20px 20px;
-            text-align: center;
-            background: rgba(18, 18, 18, 0.85);
-            backdrop-filter: blur(18px);
-            -webkit-backdrop-filter: blur(18px);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            border-radius: 28px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.9);
-            animation: fadeUp 0.8s ease-out;
-        }
-
-        /* ==========================================
-                   KOLOM 2 — INFO GTPS
-                   ========================================== */
-        .card-gtps {
-            padding: 20px 20px 18px;
-            text-align: center;
-            background: linear-gradient(145deg, rgba(20, 30, 50, 0.92), rgba(10, 15, 30, 0.92));
-            backdrop-filter: blur(18px);
-            -webkit-backdrop-filter: blur(18px);
-            border: 1px solid rgba(79, 172, 254, 0.25);
-            border-radius: 28px;
-            box-shadow: 0 10px 40px rgba(79, 172, 254, 0.15);
-            animation: fadeUp 0.8s ease-out 0.15s both;
-        }
-
-        @keyframes fadeUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* ==========================================
-                   AVATAR
-                   ========================================== */
-        .avatar-wrapper {
-            margin-bottom: 10px;
-        }
-        .avatar {
-            width: 88px;
-            height: 88px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 2px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 0 30px rgba(255, 255, 255, 0.03);
-            display: block;
-            margin: 0 auto;
-            transition: 0.3s;
-        }
-        .avatar:hover {
-            transform: scale(1.03);
-            border-color: rgba(255, 255, 255, 0.25);
-        }
-
-        /* ==========================================
-                   USERNAME — MERAH PUTIH HITAM BERGERAK
-                   ========================================== */
-        .username {
-            font-size: 24px;
-            font-weight: 800;
-            letter-spacing: 0.5px;
-            margin-bottom: 2px;
-            background: linear-gradient(90deg, #ff1a1a, #ffffff, #1a1a1a, #ff1a1a, #ffffff, #1a1a1a);
-            background-size: 400% 100%;
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: merahPutihHitam 3.2s linear infinite;
-        }
-        @keyframes merahPutihHitam {
-            0% { background-position: 0% 50%; }
-            100% { background-position: 400% 50%; }
-        }
-
-        /* ==========================================
-                   BIO & LAST SEEN
-                   ========================================== */
-        .bio {
-            font-size: 13px;
-            color: #999;
-            margin-bottom: 10px;
-            font-weight: 400;
-        }
-
-        .lastseen {
-            font-size: 11px;
-            color: #555;
-            margin-bottom: 16px;
-            letter-spacing: 0.3px;
-        }
-        .lastseen span {
-            color: #777;
-        }
-
-        /* ==========================================
-                   TOMBOL AKSI — SEJAJAR HORIZONTAL (BARU!)
-                   ========================================== */
-        .buttons {
-            display: flex;
-            flex-direction: row;
-            gap: 10px;
-            margin-bottom: 18px;
-            justify-content: center;
-        }
-
-        .btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            padding: 14px 8px;
-            flex: 1;
-            max-width: 48%;
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 16px;
-            color: #ddd;
-            font-weight: 700;
-            font-size: 14px;
-            cursor: pointer;
-            transition: 0.25s ease;
-            text-decoration: none;
-            letter-spacing: 0.3px;
-        }
-
-        .btn:active {
-            transform: scale(0.97);
-            background: rgba(255, 255, 255, 0.12);
-        }
-
-        .btn .icon {
-            font-size: 16px;
-        }
-
-        /* TOMBOL DENGAN GRADASI HITAM-PUTIH BERGERAK */
-        .btn-action {
-            color: transparent;
-            background: linear-gradient(90deg, #ffffff, #000000, #ffffff, #000000, #ffffff);
-            background-size: 300% 100%;
-            -webkit-background-clip: text;
-            background-clip: text;
-            animation: textSlide 2.8s linear infinite;
-            font-weight: 800;
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            background-color: rgba(255, 255, 255, 0.04);
-            background-blend-mode: overlay;
-        }
-
-        @keyframes textSlide {
-            0% {
-                background-position: 0% 50%;
-            }
-            100% {
-                background-position: 300% 50%;
-            }
-        }
-
-        /* ==========================================
-                   STATISTIK
-                   ========================================== */
-        .stats {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 6px 14px;
-            padding-top: 14px;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            font-size: 12px;
-            color: #777;
-        }
-
-        /* ==========================================
-                   GTPS CARD — BIRU PUTIH BERGERAK
-                   ========================================== */
-        .gtps-brand {
-            font-size: 20px;
-            font-weight: 900;
-            letter-spacing: 1px;
-            background: linear-gradient(135deg, #4facfe, #00f2fe, #ffffff, #4facfe);
-            background-size: 300% 300%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: blueWhiteShift 4s ease-in-out infinite;
-            margin-bottom: 2px;
-        }
-        @keyframes blueWhiteShift {
-            0% {
-                background-position: 0% 50%;
-            }
-            50% {
-                background-position: 100% 50%;
-            }
-            100% {
-                background-position: 0% 50%;
-            }
-        }
-
-        .gtps-sub {
-            font-size: 12px;
-            color: #8899bb;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-            margin-bottom: 14px;
-            border-bottom: 1px solid rgba(79, 172, 254, 0.15);
-            padding-bottom: 12px;
-        }
-        .gtps-sub span {
-            color: #4facfe;
-        }
-
-        /* Tombol Join GTPS */
-        .btn-join-gtps {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            padding: 12px;
-            border: none;
-            border-radius: 14px;
-            color: #fff;
-            font-weight: 800;
-            font-size: 14px;
-            text-decoration: none;
-            transition: 0.3s;
-            background: linear-gradient(135deg, #4facfe, #00f2fe, #ffffff, #4facfe);
-            background-size: 300% 300%;
-            animation: blueWhiteBg 4s ease-in-out infinite;
-            box-shadow: 0 4px 20px rgba(79, 172, 254, 0.3);
-            text-shadow: 0 0 12px rgba(0, 0, 0, 0.3);
-        }
-        @keyframes blueWhiteBg {
-            0% {
-                background-position: 0% 50%;
-            }
-            50% {
-                background-position: 100% 50%;
-            }
-            100% {
-                background-position: 0% 50%;
-            }
-        }
-        .btn-join-gtps:active {
-            transform: scale(0.97);
-            opacity: 0.85;
-        }
-        .btn-join-gtps .icon {
-            font-size: 16px;
-        }
-
-        .gtps-legal {
-            font-size: 9px;
-            color: #445566;
-            text-align: center;
-            line-height: 1.5;
-            margin-top: 10px;
-        }
-        .gtps-legal a {
-            color: #557799;
-            text-decoration: none;
-        }
-
-        /* ==========================================
-                   TOAST NOTIF
-                   ========================================== */
-        #toast {
-            position: fixed;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%) translateY(20px);
-            background: rgba(16, 16, 16, 0.92);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            padding: 10px 24px;
-            border-radius: 40px;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            font-size: 13px;
-            color: #eee;
-            opacity: 0;
-            transition: opacity 0.4s ease, transform 0.4s ease;
-            pointer-events: none;
-            z-index: 99;
-            white-space: nowrap;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
-        }
-        #toast.show {
-            opacity: 1;
-            transform: translateX(-50%) translateY(0);
-        }
-
-        /* ==========================================
-                   SCROLLBAR HIDE
-                   ========================================== */
-        .wrapper {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-        }
-        .wrapper::-webkit-scrollbar {
-            display: none;
-        }
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GTPS Cloud Docs</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- ===== BINTANG ===== -->
-    <div id="stars"></div>
+    <!-- ===== SIDEBAR ===== -->
+    <aside class="sidebar">
+        <h1>🎮 GTPS <span>Docs</span></h1>
+        <div class="sub">Lua API Reference</div>
 
-    <!-- ===== WRAPPER (2 KOLOM) ===== -->
-    <div class="wrapper">
+        <div class="search-box">
+            <span>🔍</span>
+            <input type="text" id="searchInput" placeholder="Cari dokumentasi...">
+        </div>
 
-        <!-- ===== KOLOM 1 — PROFIL ===== -->
-        <div class="card-profile">
+        <nav id="navMenu">
+            <div class="nav-label">Getting Started</div>
+            <a href="#" class="active" data-page="home">🚀 Quick Start</a>
+            <a href="#" data-page="install">📦 Installation</a>
 
-            <!-- AVATAR -->
-            <div class="avatar-wrapper">
-                <img class="avatar"
-                src="https://cdn.phototourl.com/free/2026-08-04-1192ef1c-b388-45d3-8747-9df2928b501d.png"
-                alt="Avatar THOM"
-                onerror="this.src='https://ui-avatars.com/api/?name=THOM&size=96&background=1a1a1a&color=fff&bold=true'">
-            </div>
+            <div class="nav-label">API Reference</div>
+            <a href="#" data-page="callbacks">🔔 Callbacks <span class="badge">83</span></a>
+            <a href="#" data-page="player">👤 Player Methods <span class="badge">125</span></a>
+            <a href="#" data-page="world">🌍 World Methods <span class="badge">68</span></a>
 
-            <!-- USERNAME -->
-            <div class="username">𝗧𝗛𝗢𝗠</div>
+            <div class="nav-label">Examples</div>
+            <a href="#" data-page="commands">⚡ Commands</a>
+            <a href="#" data-page="storage">💾 Data Storage</a>
+            <a href="#" data-page="dialogs">💬 Dialogs</a>
+        </nav>
+    </aside>
 
-            <!-- BIO & LAST SEEN -->
-            <div class="bio">🜲 The less you know, the better. 🜲</div>
+    <!-- ===== CONTENT ===== -->
+    <main class="content">
 
-            <div class="lastseen">⏱ last seen <span id="lastSeen">just now</span></div>
+        <!-- PAGE: HOME -->
+        <div id="page-home">
+            <h1>🎮 GTPS Cloud Lua API</h1>
+            <div class="tag">📘 Complete Lua Reference</div>
 
-            <!-- ==========================================
-            TOMBOL AKSI — DISCORD & TIKTOK SEJAJAR!
-            ========================================== -->
-            <div class="buttons">
-                <a href="https://discord.gg/X4KmS3ftm" target="_blank" rel="noopener" class="btn btn-action">
-                    <span class="icon">◉</span> GTPS Info
-                </a>
-                <a href="https://tiktok.com/@thom_id" target="_blank" rel="noopener" class="btn btn-action">
-                    <span class="icon">◉</span> TikTok
-                </a>
-            </div>
+            <p>Complete Lua scripting reference for GTPS Cloud. Build custom systems, events, dialogs, and much more — all through Lua!</p>
 
-            <!-- STATS -->
             <div class="stats">
-                <span>👁️ Views <span id="views">0</span></span>
+                <div class="stat-card"><div class="num">83</div><div class="lbl">Callbacks</div></div>
+                <div class="stat-card"><div class="num">125</div><div class="lbl">Player Methods</div></div>
+                <div class="stat-card"><div class="num">68</div><div class="lbl">World Methods</div></div>
+                <div class="stat-card"><div class="num">411</div><div class="lbl">Total Methods</div></div>
+            </div>
+
+            <h2>🚀 Quick Start</h2>
+            <p>Lua scripts in GTPS Cloud are loaded automatically on server start. Create a <code>.lua</code> file and upload it through the File Manager in your dashboard.</p>
+
+            <h3>📝 Basic Template</h3>
+            <div class="code-wrap">
+                <button class="copy-btn" onclick="copyCode(this)">📋 Copy</button>
+                <pre><span class="cmt">-- Basic GTPS Cloud script template</span>
+<span class="fn">print</span>(<span class="str">"(Loaded) My Script"</span>)
+
+<span class="kw">registerLuaCommand</span>({
+    command = <span class="str">"hello"</span>,
+    roleRequired = 0,
+    description = <span class="str">"Greet a player"</span>
+})
+
+<span class="kw">onPlayerCommandCallback</span>(<span class="kw">function</span>(world, player, fullCommand)
+    <span class="kw">local</span> cmd = fullCommand:match(<span class="str">"^(%S+)"</span>)
+    <span class="kw">if</span> cmd ~= <span class="str">"hello"</span> <span class="kw">then</span> <span class="kw">return</span> <span class="kw">false</span> <span class="kw">end</span>
+    
+    player:onConsoleMessage(<span class="str">"Hello, world!"</span>)
+    <span class="kw">return</span> <span class="kw">true</span>
+<span class="kw">end</span>)</pre>
+            </div>
+
+            <h2>⚠️ Important Notes</h2>
+
+            <div class="note">
+                <strong>🔒 Don't pass Player objects into timers</strong>
+                Use <code>getUserID()</code> to store a reference.
+            </div>
+
+            <div class="note warn">
+                <strong>💾 Save data inside onAutoSaveRequest</strong>
+                Save all your Lua state here.
+            </div>
+
+            <div class="note danger">
+                <strong>⚡ Avoid heavy computation in onTick</strong>
+                These callbacks fire every 100ms.
+            </div>
+
+            <h2>🎨 Color Codes</h2>
+            <div class="color-grid">
+                <div class="color-item"><div class="swatch" style="background:#fff;"></div><code>`0</code> White</div>
+                <div class="color-item"><div class="swatch" style="background:#9b59b6;"></div><code>`1</code> Purple</div>
+                <div class="color-item"><div class="swatch" style="background:#2ecc71;"></div><code>`2</code> Green</div>
+                <div class="color-item"><div class="swatch" style="background:#f1c40f;"></div><code>`3</code> Yellow</div>
+                <div class="color-item"><div class="swatch" style="background:#e74c3c;"></div><code>`4</code> Red</div>
+                <div class="color-item"><div class="swatch" style="background:#1abc9c;"></div><code>`5</code> Cyan</div>
+                <div class="color-item"><div class="swatch" style="background:#f39c12;"></div><code>`6</code> Gold</div>
+                <div class="color-item"><div class="swatch" style="background:#e67e22;"></div><code>`7</code> Orange</div>
+                <div class="color-item"><div class="swatch" style="background:#95a5a6;"></div><code>`8</code> Gray</div>
+                <div class="color-item"><div class="swatch" style="background:#3498db;"></div><code>`9</code> Blue</div>
+                <div class="color-item"><div class="swatch" style="background:#ecf0f1;"></div><code>`w</code> White2</div>
+                <div class="color-item"><div class="swatch" style="background:#d35400;"></div><code>`o</code> Orange2</div>
             </div>
         </div>
 
-        <!-- ===== KOLOM 2 — INFO GTPS ===== -->
-        <div class="card-gtps">
-
-            <div class="gtps-brand">⚒ GTPS Hosting ⚒</div>
-            <div class="gtps-sub">GROWTOPIA<span> PRIVATE SERVER</span></div>
-
-            <a href="https://gtpshosting.web.id/" target="_blank" rel="noopener" class="btn-join-gtps">
-                <span class="icon"></span>Web GTPS Hosting
-            </a>
-
-            <div class="gtps-legal">
-                GTPS Hosting is a fan-made hosting service and is not affiliated with,<br>
-                endorsed by, or sponsored by Ubisoft or Growtopia.<br>
-                © 2026 GTPS Hosting. All rights reserved.
-            </div>
+        <!-- PAGE: INSTALL -->
+        <div id="page-install" style="display:none;">
+            <h1>📦 Installation</h1>
+            <p>Panduan instalasi GTPS Cloud.</p>
         </div>
 
-    </div>
+        <!-- PAGE: CALLBACKS -->
+        <div id="page-callbacks" style="display:none;">
+            <h1>🔔 Callbacks</h1>
+            <p>Daftar lengkap callback.</p>
+        </div>
 
-    <!-- ===== TOAST ===== -->
-    <div id="toast">✅ Membuka link...</div>
+        <!-- PAGE: PLAYER -->
+        <div id="page-player" style="display:none;">
+            <h1>👤 Player Methods</h1>
+            <p>Dokumentasi method Player.</p>
+        </div>
 
-    <script>
-        // =============================================
-        // 1. BINTANG
-        // =============================================
-        (function createStars() {
-            const container = document.getElementById('stars');
-            for (let i = 0; i < 80; i++) {
-                const star = document.createElement('div');
-                star.className = 'star';
-                star.style.left = Math.random() * 100 + '%';
-                star.style.top = Math.random() * 100 + '%';
-                star.style.setProperty('--duration', (2 + Math.random() * 3) + 's');
-                star.style.animationDelay = (Math.random() * 3) + 's';
-                const size = 1 + Math.random() * 2;
-                star.style.width = size + 'px';
-                star.style.height = size + 'px';
-                container.appendChild(star);
-            }
-        })();
+        <!-- PAGE: WORLD -->
+        <div id="page-world" style="display:none;">
+            <h1>🌍 World Methods</h1>
+            <p>Dokumentasi method World.</p>
+        </div>
 
-        // =============================================
-        // 2. LAST SEEN (WIB)
-        // =============================================
-        function updateLastSeen() {
-            const now = new Date();
-            const wib = new Date(now.getTime() + (7 * 60 * 60 * 1000));
-            const hours = String(wib.getUTCHours()).padStart(2, '0');
-            const minutes = String(wib.getUTCMinutes()).padStart(2, '0');
-            const seconds = String(wib.getUTCSeconds()).padStart(2, '0');
-            document.getElementById('lastSeen').textContent = 'today at ' + hours + ':' + minutes + ':' + seconds + ' WIB';
-        }
-        updateLastSeen();
-        setInterval(updateLastSeen, 1000);
+        <!-- PAGE: COMMANDS -->
+        <div id="page-commands" style="display:none;">
+            <h1>⚡ Commands</h1>
+            <p>Contoh pembuatan command.</p>
+        </div>
 
-        // =============================================
-        // 3. VIEWS
-        // =============================================
-        (function updateViews() {
-            let views = parseInt(localStorage.getItem('thom_views') || '0');
-            views += 1;
-            localStorage.setItem('thom_views', views);
-            document.getElementById('views').textContent = views;
-        })();
+        <!-- PAGE: STORAGE -->
+        <div id="page-storage" style="display:none;">
+            <h1>💾 Data Storage</h1>
+            <p>Panduan menyimpan data.</p>
+        </div>
 
-        // =============================================
-        // 4. TOAST
-        // =============================================
-        var toast = document.getElementById('toast');
+        <!-- PAGE: DIALOGS -->
+        <div id="page-dialogs" style="display:none;">
+            <h1>💬 Dialogs</h1>
+            <p>Contoh pembuatan dialog.</p>
+        </div>
 
-        document.querySelectorAll('.btn-action, .btn-join-gtps').forEach(function(btn) {
-            btn.addEventListener('click', function(e) {
-                showToast('⏳ Membuka ' + (this.innerText.trim() || 'link') + '...');
-            });
-        });
+    </main>
 
-        function showToast(msg) {
-            toast.textContent = msg;
-            toast.classList.add('show');
-            clearTimeout(toast._timer);
-            toast._timer = setTimeout(function() {
-                toast.classList.remove('show');
-            }, 1800);
-        }
-    </script>
+    <script src="script.js"></script>
 </body>
-  </html>
+</html>
