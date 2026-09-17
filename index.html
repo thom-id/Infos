@@ -1,254 +1,495 @@
 <!DOCTYPE html>
-<html lang="id" data-theme="dark">
+<html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GTPS Cloud Docs</title>
-    <link rel="stylesheet" href="style.css">
-    <!-- Font Awesome untuk icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="HTS | How To Service — Platform jasa setup Discord profesional. Server Discord siap dalam < 15 menit." />
+    <meta name="theme-color" content="#060b18" />
+    <title>HTS | How To Service — Jasa Setup Discord Profesional</title>
+    <link rel="icon" type="image/png" href="assets/logo-hts.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+    <!-- TOAST -->
+    <div id="toastContainer" class="toast-container" aria-live="polite"></div>
 
-    <!-- ===== LOADING SCREEN ===== -->
-    <div id="loader">
-        <div class="loader-spinner"></div>
-        <p>Loading Docs...</p>
+    <!-- NAVBAR -->
+    <header class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#home" class="nav-logo" aria-label="HTS Home">
+                <img src="assets/logo-hts.png" alt="HTS Logo" class="logo-img" />
+                <span class="logo-text">HTS</span>
+            </a>
+
+            <nav class="nav-menu" id="navMenu" aria-label="Main navigation">
+                <a href="#home" class="nav-link active" data-nav="home">Home</a>
+                <a href="#services" class="nav-link" data-nav="services">Services</a>
+                <a href="#faq" class="nav-link" data-nav="faq">FAQ</a>
+            </nav>
+
+            <div class="nav-actions">
+                <button class="btn btn-ghost" id="btnLogin">Login</button>
+                <a href="#services" class="btn btn-primary" id="btnPurchase">Purchase Now</a>
+                <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero" id="home">
+        <div class="hero-bg-grid" aria-hidden="true"></div>
+        <div class="container hero-content">
+            <div class="hero-badge">
+                <span class="badge-dot"></span>
+                Server Discord siap &lt; 15 menit
+            </div>
+            <h1 class="hero-title">
+                Your Discord,<br />
+                <span class="text-gradient">Professionally Setup.</span>
+            </h1>
+            <p class="hero-subtitle">
+                HTS menyediakan jasa pembuatan dan setup server Discord dari awal
+                sesuai kebutuhan Anda. Cepat, profesional, dan bergaransi.
+            </p>
+            <div class="hero-actions">
+                <a href="#services" class="btn btn-primary btn-lg">Explore Services</a>
+                <a href="#services" class="btn btn-outline btn-lg">Purchase Now</a>
+            </div>
+            <div class="hero-stats">
+                <div class="stat">
+                    <span class="stat-value">500+</span>
+                    <span class="stat-label">Server Setup</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-value">&lt; 15 min</span>
+                    <span class="stat-label">Waktu Aktivasi</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-value">4.9/5</span>
+                    <span class="stat-label">Rating Customer</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHY CHOOSE HTS -->
+    <section class="section why-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Why Choose HTS</span>
+                <h2 class="section-title">Kenapa Memilih Kami?</h2>
+                <p class="section-subtitle">
+                    Kami tidak sekadar membuat server Discord. Kami membangun
+                    komunitas Anda dari nol dengan standar profesional.
+                </p>
+            </div>
+            <div class="grid grid-3">
+                <div class="card feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Aktivasi Cepat</h3>
+                    <p>Paket diproses kurang dari 15 menit setelah pembayaran dikonfirmasi.</p>
+                </div>
+                <div class="card feature-card">
+                    <div class="feature-icon">🎨</div>
+                    <h3>Custom Sesuai Kebutuhan</h3>
+                    <p>Setup dari awal, disesuaikan dengan visi dan kebutuhan komunitas Anda.</p>
+                </div>
+                <div class="card feature-card">
+                    <div class="feature-icon">🔒</div>
+                    <h3>Full Ownership</h3>
+                    <p>Setelah setup selesai, server sepenuhnya menjadi milik Anda.</p>
+                </div>
+                <div class="card feature-card">
+                    <div class="feature-icon">🤖</div>
+                    <h3>Setup Bot All</h3>
+                    <p>Integrasi bot profesional untuk ticket, welcome, log, dan lainnya.</p>
+                </div>
+                <div class="card feature-card">
+                    <div class="feature-icon">🔄</div>
+                    <h3>Revisi Gratis</h3>
+                    <p>Paket A mendapatkan 2x revisi gratis jika ada yang perlu disesuaikan.</p>
+                </div>
+                <div class="card feature-card">
+                    <div class="feature-icon">💳</div>
+                    <h3>Pembayaran Mudah</h3>
+                    <p>Bayar langsung via QRIS. Cepat, aman, dan tanpa ribet.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section class="section services-section" id="services">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Services</span>
+                <h2 class="section-title">Pilih Paket Anda</h2>
+                <p class="section-subtitle">
+                    Harga transparan, fitur lengkap. Pilih sesuai kebutuhan server Discord Anda.
+                </p>
+            </div>
+
+            <div class="grid grid-2 services-grid" id="servicesGrid">
+                <!-- Paket B -->
+                <div class="card service-card" data-service-id="paket-b">
+                    <div class="service-header">
+                        <div>
+                            <span class="service-badge">Basic</span>
+                            <h3 class="service-name">Paket B</h3>
+                        </div>
+                        <div class="service-price">
+                            <span class="price-currency">Rp</span>
+                            <span class="price-value">15.000</span>
+                        </div>
+                    </div>
+                    <p class="service-desc">
+                        Cocok untuk komunitas kecil yang baru memulai server Discord.
+                    </p>
+                    <ul class="service-features">
+                        <li>Setup Category &amp; Channel</li>
+                        <li>Setup Roles &amp; Auto Role</li>
+                        <li>Setup Permissions</li>
+                    </ul>
+                    <button class="btn btn-primary btn-block" data-purchase="paket-b">
+                        Purchase Paket B
+                    </button>
+                </div>
+
+                <!-- Paket A -->
+                <div class="card service-card service-card-popular" data-service-id="paket-a">
+                    <div class="popular-ribbon">POPULER</div>
+                    <div class="service-header">
+                        <div>
+                            <span class="service-badge badge-premium">Premium</span>
+                            <h3 class="service-name">Paket A</h3>
+                        </div>
+                        <div class="service-price">
+                            <span class="price-currency">Rp</span>
+                            <span class="price-value">25.000</span>
+                        </div>
+                    </div>
+                    <p class="service-desc">
+                        Paket lengkap dengan sistem ticket, welcome, dan custom request.
+                    </p>
+                    <ul class="service-features">
+                        <li>Setup Category &amp; Channel</li>
+                        <li>Ticket System</li>
+                        <li>Invite Log</li>
+                        <li>Welcome System &amp; Banner</li>
+                        <li>Setup Bot All</li>
+                        <li>Setup Roles &amp; Auto Role</li>
+                        <li>Setup Permissions</li>
+                        <li class="feature-highlight">Custom Request (2x Req)</li>
+                    </ul>
+                    <button class="btn btn-primary btn-block" data-purchase="paket-a">
+                        Purchase Paket A
+                    </button>
+                </div>
+            </div>
+
+            <div class="terms-box">
+                <h4>📜 Syarat &amp; Ketentuan</h4>
+                <ol>
+                    <li>Dengan melakukan order, kamu <strong>wajib melakukan pembayaran terlebih dahulu</strong>.</li>
+                    <li>Kebijakan <strong>No Refund</strong> — Tidak ada pengembalian dana dalam bentuk apapun.</li>
+                    <li>Aktivasi paket akan diproses <strong>kurang dari 15 menit</strong> setelah pembayaran berhasil dikonfirmasi oleh kami.</li>
+                </ol>
+            </div>
+        </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section class="section how-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">How It Works</span>
+                <h2 class="section-title">Alur Pemesanan</h2>
+                <p class="section-subtitle">Hanya 5 langkah sederhana untuk mendapatkan server Discord impian Anda.</p>
+            </div>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h4>Pilih Paket</h4>
+                    <p>Pilih Paket A atau Paket B sesuai kebutuhan Anda.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h4>Isi Form Pemesanan</h4>
+                    <p>Isi data Discord dan request custom Anda.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h4>Scan QRIS</h4>
+                    <p>Scan QRIS yang tersedia di halaman pembayaran.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h4>Konfirmasi Pembayaran</h4>
+                    <p>Upload bukti bayar / transfer Anda.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">5</div>
+                    <h4>Server Siap!</h4>
+                    <p>Kami proses dan server Discord Anda siap dalam waktu singkat.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section faq-section" id="faq">
+        <div class="container container-narrow">
+            <div class="section-header">
+                <span class="section-tag">FAQ</span>
+                <h2 class="section-title">Pertanyaan Umum</h2>
+                <p class="section-subtitle">Belum yakin? Cek jawaban dari pertanyaan yang sering ditanyakan.</p>
+            </div>
+            <div class="faq-list" id="faqList"></div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section cta-section">
+        <div class="container">
+            <div class="cta-box">
+                <h2>Siap Membangun Server Discord Anda?</h2>
+                <p>Bergabung dengan ratusan komunitas yang telah mempercayakan setup server mereka kepada HTS.</p>
+                <div class="cta-actions">
+                    <a href="#services" class="btn btn-primary btn-lg">Order Sekarang</a>
+                    <a href="https://discord.gg/hts" target="_blank" rel="noopener" class="btn btn-outline btn-lg">
+                        Join Discord
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <img src="assets/logo-hts.png" alt="HTS Logo" class="logo-img" />
+                    <p class="footer-tagline">HTS | How To Service — Jasa setup Discord profesional.</p>
+                </div>
+                <div class="footer-col">
+                    <h5>Navigation</h5>
+                    <a href="#home">Home</a>
+                    <a href="#services">Services</a>
+                    <a href="#faq">FAQ</a>
+                </div>
+                <div class="footer-col">
+                    <h5>Layanan</h5>
+                    <a href="#services" data-purchase="paket-a">Paket A</a>
+                    <a href="#services" data-purchase="paket-b">Paket B</a>
+                    <a href="#services">Custom Request</a>
+                </div>
+                <div class="footer-col">
+                    <h5>Bantuan</h5>
+                    <a href="https://discord.gg/hts" target="_blank" rel="noopener">Discord Support</a>
+                    <a href="#faq">Syarat &amp; Ketentuan</a>
+                    <a href="#faq">Kebijakan Refund</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; <span id="year"></span> HTS | How To Service. All rights reserved.</p>
+                <p class="footer-note">Made with 💙 in Indonesia</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- MODAL: LOGIN -->
+    <div class="modal-overlay" id="modalLogin" aria-hidden="true">
+        <div class="modal" role="dialog" aria-labelledby="loginTitle">
+            <button class="modal-close" data-close-modal aria-label="Close">✕</button>
+            <div class="modal-header">
+                <img src="assets/logo-hts.png" alt="HTS" class="modal-logo" />
+                <h3 id="loginTitle">Masuk ke HTS</h3>
+                <p>Masuk untuk mengelola pesanan Anda.</p>
+            </div>
+            <form class="modal-form" id="formLogin">
+                <div class="form-group">
+                    <label for="loginEmail">Email</label>
+                    <input type="email" id="loginEmail" required placeholder="nama@email.com" />
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Password</label>
+                    <input type="password" id="loginPassword" required placeholder="••••••••" minlength="8" />
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Login</button>
+                <div class="form-links">
+                    <a href="#" id="linkRegister">Buat Akun</a>
+                    <a href="#" id="linkForgot">Lupa Password?</a>
+                </div>
+            </form>
+        </div>
     </div>
 
-    <!-- ===== SIDEBAR ===== -->
-    <aside class="sidebar" id="sidebar">
-        <div class="sidebar-header">
-            <h1>🎮 GTPS <span>Docs</span></h1>
-            <button class="close-menu" id="closeMenu"><i class="fas fa-times"></i></button>
+    <!-- MODAL: REGISTER -->
+    <div class="modal-overlay" id="modalRegister" aria-hidden="true">
+        <div class="modal" role="dialog" aria-labelledby="registerTitle">
+            <button class="modal-close" data-close-modal aria-label="Close">✕</button>
+            <div class="modal-header">
+                <img src="assets/logo-hts.png" alt="HTS" class="modal-logo" />
+                <h3 id="registerTitle">Buat Akun HTS</h3>
+                <p>Daftar untuk mulai memesan layanan.</p>
+            </div>
+            <form class="modal-form" id="formRegister">
+                <div class="form-group">
+                    <label for="registerName">Nama Lengkap</label>
+                    <input type="text" id="registerName" required minlength="2" placeholder="Nama Anda" />
+                </div>
+                <div class="form-group">
+                    <label for="registerEmail">Email</label>
+                    <input type="email" id="registerEmail" required placeholder="nama@email.com" />
+                </div>
+                <div class="form-group">
+                    <label for="registerPassword">Password</label>
+                    <input type="password" id="registerPassword" required minlength="8" placeholder="Minimal 8 karakter" />
+                </div>
+                <div class="form-group">
+                    <label for="registerConfirm">Konfirmasi Password</label>
+                    <input type="password" id="registerConfirm" required minlength="8" placeholder="Ulangi password" />
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Create Account</button>
+                <div class="form-links">
+                    <a href="#" id="linkLogin">Sudah punya akun? Login</a>
+                </div>
+            </form>
         </div>
-        <div class="sub">Lua API Reference v2.0</div>
+    </div>
 
-        <div class="search-box">
-            <i class="fas fa-search"></i>
-            <input type="text" id="searchInput" placeholder="Cari dokumentasi... (Ctrl+K)">
+    <!-- MODAL: CHECKOUT -->
+    <div class="modal-overlay" id="modalCheckout" aria-hidden="true">
+        <div class="modal modal-lg" role="dialog" aria-labelledby="checkoutTitle">
+            <button class="modal-close" data-close-modal aria-label="Close">✕</button>
+            <div class="modal-header">
+                <h3 id="checkoutTitle">Checkout</h3>
+                <p>Lengkapi data di bawah ini untuk melanjutkan.</p>
+            </div>
+            <form class="modal-form" id="formCheckout">
+                <input type="hidden" id="checkoutServiceId" />
+                <div class="checkout-grid">
+                    <div class="checkout-left">
+                        <h4 class="form-section-title">Data Pemesan</h4>
+                        <div class="form-group">
+                            <label for="discordUsername">Discord Username *</label>
+                            <input type="text" id="discordUsername" required placeholder="contoh: user#1234 atau @user" maxlength="100" />
+                        </div>
+                        <div class="form-group">
+                            <label for="discordId">Discord ID (Opsional)</label>
+                            <input type="text" id="discordId" placeholder="contoh: 123456789012345678" maxlength="100" />
+                        </div>
+                        <div class="form-group">
+                            <label for="customRequest">Request Custom (Opsional)</label>
+                            <textarea id="customRequest" rows="3" placeholder="Jelaskan kebutuhan server Discord Anda..." maxlength="1000"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="notes">Catatan Tambahan (Opsional)</label>
+                            <textarea id="notes" rows="2" placeholder="Catatan untuk tim HTS..." maxlength="500"></textarea>
+                        </div>
+                    </div>
+                    <div class="checkout-right">
+                        <h4 class="form-section-title">Ringkasan Pesanan</h4>
+                        <div class="order-summary" id="orderSummary"></div>
+                        <div class="order-total">
+                            <span>Total</span>
+                            <span id="orderTotal">Rp 0</span>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">Lanjut ke Pembayaran</button>
+                    </div>
+                </div>
+            </form>
         </div>
+    </div>
 
-        <nav id="navMenu">
-            <div class="nav-label">Getting Started</div>
-            <a href="#" class="active" data-page="home"><i class="fas fa-rocket"></i> Quick Start</a>
-            <a href="#" data-page="install"><i class="fas fa-download"></i> Installation</a>
-
-            <div class="nav-label">API Reference</div>
-            <a href="#" data-page="callbacks"><i class="fas fa-bell"></i> Callbacks <span class="badge">83</span></a>
-            <a href="#" data-page="player"><i class="fas fa-user"></i> Player Methods <span class="badge">125</span></a>
-            <a href="#" data-page="world"><i class="fas fa-globe"></i> World Methods <span class="badge">68</span></a>
-
-            <div class="nav-label">Examples</div>
-            <a href="#" data-page="commands"><i class="fas fa-terminal"></i> Commands</a>
-            <a href="#" data-page="storage"><i class="fas fa-database"></i> Data Storage</a>
-            <a href="#" data-page="dialogs"><i class="fas fa-comment"></i> Dialogs</a>
-        </nav>
-
-        <div class="sidebar-footer">
-            <button id="themeToggle"><i class="fas fa-moon"></i> <span>Dark</span></button>
-        </div>
-    </aside>
-
-    <!-- ===== MOBILE OVERLAY ===== -->
-    <div class="overlay" id="overlay"></div>
-
-    <!-- ===== MAIN CONTENT ===== -->
-    <main class="content">
-
-        <!-- ===== TOP BAR ===== -->
-        <div class="topbar">
-            <button class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></button>
-            <div class="breadcrumb" id="breadcrumb">📄 Home</div>
-            <div class="topbar-actions">
-                <button id="themeToggleTop"><i class="fas fa-moon"></i></button>
-                <button id="backToTop"><i class="fas fa-arrow-up"></i></button>
+   <!-- MODAL: PAYMENT -->
+    <div class="modal-overlay" id="modalPayment" aria-hidden="true">
+        <div class="modal modal-lg" role="dialog" aria-labelledby="paymentTitle">
+            <button class="modal-close" data-close-modal aria-label="Close">✕</button>
+            <div class="modal-header">
+                <h3 id="paymentTitle">Pembayaran</h3>
+                <p>Order <strong id="paymentOrderNumber">-</strong></p>
             </div>
-        </div>
+            <div class="payment-content">
+                <div class="payment-info">
+                    <div class="payment-row">
+                        <span>Service</span>
+                        <strong id="paymentService">-</strong>
+                    </div>
+                    <div class="payment-row">
+                        <span>Total</span>
+                        <strong id="paymentTotal">Rp 0</strong>
+                    </div>
+                    <div class="payment-row">
+                        <span>Status</span>
+                        <span class="status-badge status-pending" id="paymentStatus">Menunggu Pembayaran</span>
+                    </div>
+                </div>
 
-        <!-- ===== PAGE: HOME ===== -->
-        <div id="page-home" class="page">
-            <div class="page-header">
-                <h1>🎮 GTPS Cloud Lua API</h1>
-                <div class="tag">📘 Complete Lua Reference</div>
-            </div>
+                <div class="payment-qris">
+                    <p class="qris-label">Scan QRIS di bawah ini:</p>
+                    <div class="qris-wrapper">
+                        <img src="assets/qris-hts.png" alt="QRIS HTS - THOM STORE" class="qris-img" id="qrisImage" />
+                    </div>
+                    <p class="qris-merchant">Merchant: <strong>THOM STORE</strong></p>
+                    <p class="qris-nmid">NMID: ID1026531246886</p>
+                </div>
 
-            <div class="typing-container">
-                <span id="typing-text"></span><span class="cursor">|</span>
-            </div>
+                <div class="payment-actions">
+                    <button type="button" class="btn btn-outline btn-block" id="btnUploadProof">
+                        📎 Upload Bukti Bayar
+                    </button>
+                    <input type="file" id="proofInput" accept="image/*" hidden />
+                    <p class="proof-status" id="proofStatus"></p>
+                    <button type="button" class="btn btn-primary btn-block" id="btnAlreadyPaid">
+                        Saya Sudah Bayar
+                    </button>
+                </div>
 
-            <p>Complete Lua scripting reference for GTPS Cloud. Build custom systems, events, dialogs, and much more — all through Lua!</p>
-
-            <!-- STATS -->
-            <div class="stats">
-                <div class="stat-card"><div class="num">83</div><div class="lbl">Callbacks</div></div>
-                <div class="stat-card"><div class="num">125</div><div class="lbl">Player Methods</div></div>
-                <div class="stat-card"><div class="num">68</div><div class="lbl">World Methods</div></div>
-                <div class="stat-card"><div class="num">411</div><div class="lbl">Total Methods</div></div>
-            </div>
-
-            <!-- TOC -->
-            <div class="toc">
-                <h4><i class="fas fa-list"></i> Daftar Isi</h4>
-                <ul>
-                    <li><a href="#quickstart">🚀 Quick Start</a></li>
-                    <li><a href="#template">📝 Basic Template</a></li>
-                    <li><a href="#notes">⚠️ Important Notes</a></li>
-                    <li><a href="#colors">🎨 Color Codes</a></li>
-                </ul>
-            </div>
-
-            <h2 id="quickstart"><i class="fas fa-rocket"></i> Quick Start</h2>
-            <p>Lua scripts in GTPS Cloud are loaded automatically on server start. Create a <code>.lua</code> file and upload it through the File Manager in your dashboard.</p>
-
-            <h3 id="template">📝 Basic Template</h3>
-            <div class="code-wrap">
-                <button class="copy-btn" onclick="copyCode(this)"><i class="fas fa-copy"></i> Copy</button>
-                <pre><span class="cmt">-- Basic GTPS Cloud script template</span>
-<span class="fn">print</span>(<span class="str">"(Loaded) My Script — by Developer"</span>)
-
-<span class="kw">registerLuaCommand</span>({
-    command = <span class="str">"hello"</span>,
-    roleRequired = 0,
-    description = <span class="str">"Greet a player"</span>
-})
-
-<span class="kw">onPlayerCommandCallback</span>(<span class="kw">function</span>(world, player, fullCommand)
-    <span class="kw">local</span> cmd = fullCommand:match(<span class="str">"^(%S+)"</span>)
-    <span class="kw">if</span> cmd ~= <span class="str">"hello"</span> <span class="kw">then</span> <span class="kw">return</span> <span class="kw">false</span> <span class="kw">end</span>
-    
-    <span class="kw">local</span> name = player:getCleanName()
-    player:onConsoleMessage(<span class="str">"`6Hello, "</span> .. name .. <span class="str">"! Welcome!"</span>)
-    player:onTalkBubble(player:getNetID(), <span class="str">"Hey!"</span>, <span class="num">1</span>)
-    <span class="kw">return</span> <span class="kw">true</span>
-<span class="kw">end</span>)
-
-<span class="cmt">-- Greet on login</span>
-<span class="kw">onPlayerLoginCallback</span>(<span class="kw">function</span>(player)
-    player:sendVariant({
-        <span class="str">"OnAddNotification"</span>,
-        <span class="str">"interface/science_button.rttex"</span>,
-        <span class="str">"`wWelcome to the server!"</span>,
-        <span class="str">"audio/hub_open.wav"</span>
-    })
-<span class="kw">end</span>)</pre>
-            </div>
-
-            <h2 id="notes"><i class="fas fa-exclamation-triangle"></i> Important Notes</h2>
-
-            <div class="note info">
-                <strong><i class="fas fa-lock"></i> Don't pass Player objects into timers</strong>
-                Use <code>getUserID()</code> to store a reference, then call <code>getPlayer()</code> inside the timer.
-            </div>
-
-            <div class="note warning">
-                <strong><i class="fas fa-save"></i> Save data inside onAutoSaveRequest</strong>
-                The server calls this callback periodically. Save all your Lua state here.
-            </div>
-
-            <div class="note danger">
-                <strong><i class="fas fa-bolt"></i> Avoid heavy computation in onTick</strong>
-                These callbacks fire every 100ms. Large loops can cause server lag.
-            </div>
-
-            <div class="note success">
-                <strong><i class="fas fa-code-branch"></i> Wrap HTTP requests in coroutines</strong>
-                All <code>http.get()</code> and <code>http.post()</code> calls must be wrapped in <code>coroutine.wrap()</code>.
-            </div>
-
-            <h2 id="colors"><i class="fas fa-palette"></i> Color Codes</h2>
-            <p>Use a backtick followed by a digit or letter to colorize text in console messages, dialogs, and more.</p>
-
-            <div class="color-grid">
-                <div class="color-item"><div class="swatch" style="background:#ffffff;"></div><code>`0</code> White</div>
-                <div class="color-item"><div class="swatch" style="background:#9b59b6;"></div><code>`1</code> Purple</div>
-                <div class="color-item"><div class="swatch" style="background:#2ecc71;"></div><code>`2</code> Green</div>
-                <div class="color-item"><div class="swatch" style="background:#f1c40f;"></div><code>`3</code> Yellow</div>
-                <div class="color-item"><div class="swatch" style="background:#e74c3c;"></div><code>`4</code> Red</div>
-                <div class="color-item"><div class="swatch" style="background:#1abc9c;"></div><code>`5</code> Cyan</div>
-                <div class="color-item"><div class="swatch" style="background:#f39c12;"></div><code>`6</code> Gold</div>
-                <div class="color-item"><div class="swatch" style="background:#e67e22;"></div><code>`7</code> Orange</div>
-                <div class="color-item"><div class="swatch" style="background:#95a5a6;"></div><code>`8</code> Gray</div>
-                <div class="color-item"><div class="swatch" style="background:#3498db;"></div><code>`9</code> Blue</div>
-                <div class="color-item"><div class="swatch" style="background:#ecf0f1;"></div><code>`w</code> White2</div>
-                <div class="color-item"><div class="swatch" style="background:#d35400;"></div><code>`o</code> Orange2</div>
-            </div>
-
-            <div class="note info">
-                <strong><i class="fas fa-lightbulb"></i> Pro Tip:</strong> Kombinasikan kode warna untuk efek gradasi, misalnya <code>`2Hello `6World`w!</code> akan menampilkan "Hello" hijau dan "World" emas.
+                <p class="payment-note">
+                    ⚠️ Status <strong>PAID</strong> hanya akan diberikan setelah pembayaran
+                    diverifikasi oleh tim HTS. Tombol di atas hanya mengirim konfirmasi,
+                    bukan bukti pembayaran.
+                </p>
             </div>
         </div>
+    </div>
 
-        <!-- ===== PAGE: INSTALL ===== -->
-        <div id="page-install" class="page" style="display:none;">
-            <div class="page-header">
-                <h1>📦 Installation</h1>
-                <div class="tag">📘 Step by Step</div>
+    <!-- MODAL: SUCCESS -->
+    <div class="modal-overlay" id="modalSuccess" aria-hidden="true">
+        <div class="modal modal-sm" role="dialog" aria-labelledby="successTitle">
+            <div class="success-content">
+                <div class="success-icon">🎉</div>
+                <h3 id="successTitle">Order Berhasil Dibuat!</h3>
+                <p>Order Anda sedang menunggu verifikasi pembayaran.</p>
+                <div class="success-info">
+                    <div class="success-row">
+                        <span>Order</span>
+                        <strong id="successOrderNumber">-</strong>
+                    </div>
+                    <div class="success-row">
+                        <span>Service</span>
+                        <strong id="successService">-</strong>
+                    </div>
+                    <div class="success-row">
+                        <span>Total</span>
+                        <strong id="successTotal">-</strong>
+                    </div>
+                </div>
+                <button class="btn btn-primary btn-block" data-close-modal>Mengerti</button>
+                <p class="success-note">
+                    Tim HTS akan memproses order Anda setelah pembayaran terverifikasi.
+                </p>
             </div>
-            <p>Panduan instalasi GTPS Cloud akan muncul di sini. (Konten bisa diedit sesuai kebutuhan)</p>
         </div>
-
-        <!-- ===== PAGE: CALLBACKS ===== -->
-        <div id="page-callbacks" class="page" style="display:none;">
-            <div class="page-header">
-                <h1>🔔 Callbacks</h1>
-                <div class="tag">📘 83 Total</div>
-            </div>
-            <p>Daftar lengkap callback yang tersedia di GTPS Cloud. (Konten bisa diedit)</p>
-        </div>
-
-        <!-- ===== PAGE: PLAYER ===== -->
-        <div id="page-player" class="page" style="display:none;">
-            <div class="page-header">
-                <h1>👤 Player Methods</h1>
-                <div class="tag">📘 125 Total</div>
-            </div>
-            <p>Dokumentasi lengkap method untuk objek Player. (Konten bisa diedit)</p>
-        </div>
-
-        <!-- ===== PAGE: WORLD ===== -->
-        <div id="page-world" class="page" style="display:none;">
-            <div class="page-header">
-                <h1>🌍 World Methods</h1>
-                <div class="tag">📘 68 Total</div>
-            </div>
-            <p>Dokumentasi lengkap method untuk objek World. (Konten bisa diedit)</p>
-        </div>
-
-        <!-- ===== PAGE: COMMANDS ===== -->
-        <div id="page-commands" class="page" style="display:none;">
-            <div class="page-header">
-                <h1>⚡ Commands</h1>
-                <div class="tag">📘 Examples</div>
-            </div>
-            <p>Contoh pembuatan command di GTPS Cloud. (Konten bisa diedit)</p>
-        </div>
-
-        <!-- ===== PAGE: STORAGE ===== -->
-        <div id="page-storage" class="page" style="display:none;">
-            <div class="page-header">
-                <h1>💾 Data Storage</h1>
-                <div class="tag">📘 Guide</div>
-            </div>
-            <p>Panduan menyimpan data player secara persistens. (Konten bisa diedit)</p>
-        </div>
-
-        <!-- ===== PAGE: DIALOGS ===== -->
-        <div id="page-dialogs" class="page" style="display:none;">
-            <div class="page-header">
-                <h1>💬 Dialogs</h1>
-                <div class="tag">📘 Examples</div>
-            </div>
-            <p>Contoh pembuatan dialog box dengan <code>sendVariant</code>. (Konten bisa diedit)</p>
-        </div>
-
-        <!-- ===== FOOTER ===== -->
-        <footer class="footer">
-            <p>© 2026 GTPS Cloud Docs — Dibuat dengan ❤️ untuk komunitas</p>
-        </footer>
-
-    </main>
+    </div>
 
     <script src="script.js"></script>
 </body>
-</html>
+</html> 
